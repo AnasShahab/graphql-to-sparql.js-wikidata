@@ -17,6 +17,8 @@ const Converter_1 = require("../lib/Converter");
 // console.log(process.argv)
 const args = minimist(process.argv.slice(2));
 // console.log(args)
+const homeDir=require('os').homedir();
+const desktop=`${homeDir}/Desktop`;
 if (args._.length !== 2 || args.h || args.help) {
     if(args._.length !== 1) {
         process.stderr.write('usage: graphql-to-sparql [--help] context query\n' +
@@ -30,10 +32,10 @@ if (args._.length !== 2 || args.h || args.help) {
         process.exit(1);
     }
     else {
-        process.stderr.write('Default context at "~/Desktop/contextD.jsonld" is being used\n');
+        process.stderr.write('Default context at Desktop --> contextD.jsonld is being used\n');
         // console.log(args._[0])
         // args._.push(args._[0])
-        args._.unshift('C:/Users/ashahab/Desktop/contextD.jsonld')
+        args._.unshift(`${desktop}/contextD.jsonld`)
         // console.log(args)
         // process.exit(1);
     }
